@@ -63,7 +63,6 @@ class Board:
 
     def is_column_complete(self, column_index):
         c = [self.board[i][column_index] for i in range(9)]
-        print(c)
         c.sort()
         return c == [i for i in range(1, 10)]
 

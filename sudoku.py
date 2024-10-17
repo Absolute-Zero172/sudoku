@@ -40,6 +40,17 @@ class Board:
                 return True
         return False
 
+    def __bool__(self):
+        for idx in range(9):
+            if not self.is_row_complete(idx):
+                return False
+            if not self.is_column_complete(idx):
+                return False
+            if not self.is_block_complete(idx):
+                return False
+
+        return True
+
     def copy(self):
         output = Board()
         output.board = deepcopy(self.board)

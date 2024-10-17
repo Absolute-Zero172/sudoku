@@ -57,12 +57,13 @@ class Board:
         return output
 
     def is_row_complete(self, row_index):
-        r = self.board[row_index]
+        r = self.board[row_index].copy()
         r.sort()
         return r == [i for i in range(1, 10)]
 
     def is_column_complete(self, column_index):
         c = [self.board[i][column_index] for i in range(9)]
+        print(c)
         c.sort()
         return c == [i for i in range(1, 10)]
 

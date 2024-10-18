@@ -180,8 +180,13 @@ def place_random_zero(board: Board) -> None:
     if len(zeroes) == 81:
         return None
 
-    coords = randint(0, 9), randint(0, 9)
-    while coords in zeroes:
-        coords = randint(0, 9), randint(0, 9)
+    coordinates = randint(0, 8), randint(0, 8)
+    while coordinates in zeroes:
+        coordinates = randint(0, 8), randint(0, 8)
 
-    board[coords] = 0
+    board[coordinates] = 0
+
+
+def place_zeroes(board: Board, number_of_zeroes: int) -> None:
+    for _ in range(number_of_zeroes):
+        place_random_zero(board)

@@ -1,5 +1,5 @@
 from copy import deepcopy
-from random import choice
+from random import choice, randint
 
 
 class Board:
@@ -172,3 +172,16 @@ class Board:
                     zeroes.append((x, y))
 
         return zeroes
+
+
+def place_random_zero(board: Board) -> None:
+    zeroes = board.get_zeroes()
+
+    if len(zeroes) == 81:
+        return None
+
+    coords = randint(0, 9), randint(0, 9)
+    while coords in zeroes:
+        coords = randint(0, 9), randint(0, 9)
+
+    board[coords] = 0

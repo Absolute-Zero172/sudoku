@@ -56,6 +56,9 @@ class Board:
         output.board = deepcopy(self.board)
         return output
 
+    def clear(self):
+        self.board = [[0 for _ in range(9)] for __ in range(9)]
+
     def is_row_complete(self, row_index):
         r = self.board[row_index].copy()
         r.sort()
@@ -138,3 +141,24 @@ class Board:
 
     def get_random_option(self, x, y):
         return choice(self.options_for_position(x, y))
+
+    def random_populate(self):
+        success = False
+
+        while not success:
+            self.clear()
+
+            x, y = 0, 0
+
+            while y <= 8 and len(self.options_for_position(x, y)) > 0:
+                random_option = self.get_random_option(x, y)
+
+                self[x, y] = random_option
+
+                x += 1
+                if x > 8:
+                    x = 0
+                    y += 1
+
+            if self:
+                success = True

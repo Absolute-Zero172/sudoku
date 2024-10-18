@@ -162,3 +162,13 @@ class Board:
 
             if self:
                 success = True
+
+    def get_zeroes(self):
+        zeroes = []
+
+        for y in range(9):
+            for x in range(9):
+                if self[x, y] == 0:
+                    zeroes.append((x, y))
+
+        return zeroes

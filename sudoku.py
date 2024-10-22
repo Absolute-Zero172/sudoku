@@ -190,3 +190,11 @@ def place_random_zero(board: Board) -> None:
 def place_zeroes(board: Board, number_of_zeroes: int) -> None:
     for _ in range(number_of_zeroes):
         place_random_zero(board)
+
+
+def prepare_board(zeroes=50) -> Board:
+    board = Board()
+    board.random_populate()
+    place_zeroes(board, zeroes)
+
+    return board

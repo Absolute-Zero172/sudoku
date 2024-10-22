@@ -74,6 +74,7 @@ class Board:
             self.x = 0
 
         if self.y > 8 and self.x > 0:
+            self.x, self.y = 0, 0
             raise StopIteration()
 
         return x, y, self[x, y]

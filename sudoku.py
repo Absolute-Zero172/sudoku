@@ -6,6 +6,8 @@ class Board:
     def __init__(self):
         self.board = [[0 for _ in range(9)] for __ in range(9)]
 
+        self.x, self.y = 0, 0
+
     def __getitem__(self, item):
         if not isinstance(item, tuple):
             raise TypeError("The values inside brackets must be separated with commas - Ex. sudoku[1, 2]")
@@ -58,6 +60,23 @@ class Board:
 
     def clear(self):
         self.board = [[0 for _ in range(9)] for __ in range(9)]
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+
+        x, y = self.x, self.y
+
+        self.x += 1
+        if self.x > 8:
+            self.y += 1
+            self.x = 0
+
+        if self.y > 8 and self.x > 0:
+            raise StopIteration()
+
+        return x, y, self[x, y]
 
     def is_row_complete(self, row_index):
         r = self.board[row_index].copy()
